@@ -16,7 +16,7 @@ cardBody.style.width = "250px";
 cardBody.style.padding = "20px";
 cardBody.style.borderRadius = "10px";
 cardBody.style.border = "1px solid";
-cardBody.style.margin = "0 auto";
+cardBody.style.margin = "2% auto";
 cardBody.style.display = "inline-block";
 cardBody.style.position = "relative";
 parentdiv.appendChild(cardBody);
@@ -27,7 +27,7 @@ cardTop.style.top = "20px";
 cardTop.style.left = "20px";
 cardTop.style.fontSize = "70px";
 cardTop.style.position = "absolute";
-cardTop.textContent = "1";
+
 cardTop.style.color = "black";
 cardBody.appendChild(cardTop);
 
@@ -37,7 +37,7 @@ cardBottom.style.bottom = "20px";
 cardBottom.style.right = "20px";
 cardBottom.style.fontSize = "70px";
 cardBottom.style.position = "absolute";
-cardBottom.textContent = "2";
+
 cardBody.appendChild(cardBottom);
 
 let cardNumber = document.createElement("span");
@@ -50,34 +50,36 @@ cardNumber.style.fontSize = "60px";
 
 cardBody.appendChild(cardNumber);
 
-window.onload = () => {
-  document.querySelector(".card");
-  let values = [
-    "A",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "J",
-    "Q",
-    "K"
-  ];
-  let palos = ["♦", "♥", "♠", "♣"];
+let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+let palos = ["♦", "♥", "♠", "♣"];
 
+let generateRandomCard = () => {
   let randomValue = Math.floor(Math.random() * 13);
   cardNumber.innerHTML = values[randomValue];
 
   let randomPalos = Math.floor(Math.random() * 4);
   cardBottom.innerHTML = palos[randomPalos];
   cardTop.innerHTML = palos[randomPalos];
+  console.log(randomPalos);
 
-  if (randomPalos == 0 || randomPalos == 1) {
+  if (randomPalos === 0 || randomPalos === 1) {
     cardTop.style.color = "red";
     cardBottom.style.color = "red";
   }
+};
+
+window.onload = () => {
+  generateRandomCard();
+};
+
+let space = document.createElement("br");
+parentdiv.appendChild(space);
+
+let button1 = document.createElement("button");
+button1.id = "button";
+button1.textContent = "Random Card";
+parentdiv.appendChild(button1);
+
+button1.onclick = function() {
+  generateRandomCard();
 };
