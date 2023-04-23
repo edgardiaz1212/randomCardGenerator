@@ -60,11 +60,13 @@ let generateRandomCard = () => {
   let randomPalos = Math.floor(Math.random() * 4);
   cardBottom.innerHTML = palos[randomPalos];
   cardTop.innerHTML = palos[randomPalos];
-  console.log(randomPalos);
 
-  if (randomPalos === 0 || randomPalos === 1) {
+  if (cardTop.textContent === "♦" || cardBottom.textContent === "♥") {
     cardTop.style.color = "red";
     cardBottom.style.color = "red";
+  } else {
+    cardTop.style.color = "black";
+    cardBottom.style.color = "black";
   }
 };
 
@@ -83,3 +85,4 @@ parentdiv.appendChild(button1);
 button1.onclick = function() {
   generateRandomCard();
 };
+// input1.addEventListener("click", alert("hola"));
